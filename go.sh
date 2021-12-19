@@ -1,9 +1,13 @@
 #!/usr/bin/bash
 
+source ~/.bootstrap.sh
+source "$EAGLEOWL_CONF/envs.env"
+source "$EAGLEOWL_CONF/paths.env"
+source "$EAGLEOWL_CONF/asklepian.env"
+
 # Activate env
 eval "$(conda shell.bash hook)"
-conda activate nicholsz-asklepian
-source ~/.ocarina
+conda activate $CONDA_ASKLEPIAN
 
 ## Global environment variable override
 ## You should provide these somewhere else but you can override them here if you feel like it
