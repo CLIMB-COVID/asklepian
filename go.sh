@@ -4,6 +4,7 @@ source ~/.bootstrap.sh
 source "$EAGLEOWL_CONF/envs.env"
 source "$EAGLEOWL_CONF/paths.env"
 source "$EAGLEOWL_CONF/asklepian.env"
+source "$EAGLEOWL_CONF/ocarina.env"
 
 # Activate env
 eval "$(conda shell.bash hook)"
@@ -34,6 +35,7 @@ ASKLEPIAN_PUBDIR
 ELAN_DATE
 WUHAN_FP
 COG_PUBLISHED_DIR
+MAJORA_DOMAIN
 EOF
 
 set -euo pipefail
