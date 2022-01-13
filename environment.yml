@@ -1,13 +1,16 @@
-name: nicholsz-asklepian
+name: eagleowl-asklepian
 channels:
     - conda-forge
     - bioconda
     - defaults
 dependencies:
-    - minimap2
+    - python=3.7
+    - minimap2=2.22
     - gofasta=0.0.5
+    - sqlite=3.31.1
     - pip
     - pip:
-        - azure-identity
-        - azure-storage-blob
-        - git+https://github.com/samstudio8/ocarina.git@6c311d856db2006edd6aded7dbb96ba2866208fa
+        - azure-core==1.20.1
+        - azure-identity==1.7.1
+        - azure-storage-blob==12.9.0
+        - git+https://github.com/samstudio8/ocarina.git@0ff59f05a75d2e34746b40eebdb924c4edc9d84e
