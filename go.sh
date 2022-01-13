@@ -4,7 +4,7 @@ source ~/.bootstrap.sh
 source "$EAGLEOWL_CONF/envs.env"
 source "$EAGLEOWL_CONF/paths.env"
 source "$EAGLEOWL_CONF/asklepian.env"
-source "$EAGLEOWL_CONF/ocarina.env"
+source "$EAGLEOWL_CONF/service_elan.env"
 
 # Activate env
 eval "$(conda shell.bash hook)"
