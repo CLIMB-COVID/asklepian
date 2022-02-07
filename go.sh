@@ -22,7 +22,7 @@ conda activate $CONDA_ASKLEPIAN
 ### Runtime
 # ELAN_DATE="YYYYMMDD" # elan dir date
 # WUHAN_FP= # path to wuhan ref
-# COG_PUBLISHED_DIR= # consortium readable root elan publish dir
+# ARTIFACTS_ROOT= # consortium readable root elan publish dir
 
 while read var; do
       [ -z "${!var}" ] && { echo 'Global Asklepian variable '$var' is empty or not set. Environment likely uninitialised. Aborting.'; exit 64; }
@@ -34,7 +34,7 @@ ASKLEPIAN_OUTDIR
 ASKLEPIAN_PUBDIR
 ELAN_DATE
 WUHAN_FP
-COG_PUBLISHED_DIR
+ARTIFACTS_ROOT
 MAJORA_DOMAIN
 EOF
 
@@ -94,7 +94,7 @@ python -c "import datetime; print('ocarina', str(datetime.timedelta(seconds=$SEC
 SECONDS=0
 
 if [ ! -f "$OUTDIR/best.ok" ]; then
-    python $ASKLEPIAN_DIR/get_best_ref.py --fasta $COG_PUBLISHED_DIR/latest/elan.consensus.matched.fasta --metrics $OUTDIR/consensus.metrics.tsv --latest $LAST_BEST_REFS --out-ls $OUTDIR/best_refs.paired.ls > $OUTDIR/best_refs.paired.fasta 2> $OUTDIR/best_refs.log
+    python $ASKLEPIAN_DIR/get_best_ref.py --fasta $ARTIFACTS_ROOT/elan/latest/elan.consensus.fasta --metrics $OUTDIR/consensus.metrics.tsv --latest $LAST_BEST_REFS --out-ls $OUTDIR/best_refs.paired.ls > $OUTDIR/best_refs.paired.fasta 2> $OUTDIR/best_refs.log
     touch $OUTDIR/best.ok
 else
     echo "[NOTE] Skipping get_best_ref.py"
