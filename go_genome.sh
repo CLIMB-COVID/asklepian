@@ -1,8 +1,11 @@
 #!/usr/bin/bash
 
+source ~/.bootstrap.sh
+source "$EAGLEOWL_CONF/envs.env"
+
 # Activate env
 eval "$(conda shell.bash hook)"
-conda activate nicholsz-asklepian
+conda activate $CONDA_ASKLEPIAN
 
 while read var; do
       [ -z "${!var}" ] && { echo 'Global Asklepian variable '$var' is empty or not set. Environment likely uninitialised. Aborting go_genome.'; exit 64; }
