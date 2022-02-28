@@ -122,6 +122,7 @@ SECONDS=0
 # Note flags are written to OUTDIR
 $ASKLEPIAN_DIR/go_genome.sh $OUTDIR $OUTDIR $GENOME_TABLE_BASENAME &
 $ASKLEPIAN_DIR/go_variant.sh $OUTDIR $OUTDIR $VARIANT_TABLE_BASENAME &
+$ASKLEPIAN_DIR/go_variant_v2.sh $OUTDIR $OUTDIR test_v2_${VARIANT_TABLE_BASENAME} &
 
 # Wait for jobs
 wait
@@ -141,7 +142,8 @@ if [ ! -f "$OUTDIR/latest.ok" ]; then
     # Clean
     rm -f $OUTDIR/best_refs.paired.fasta
     rm -f $OUTDIR/${GENOME_TABLE_BASENAME}.csv.gz
-    rm -f $OUTDIR/consensus.metrics.tsv
+    #rm -f $OUTDIR/consensus.metrics.tsv
+    rm -f $OUTDIR/test_v2_${VARIANT_TABLE_BASENAME}.csv
 
     # Push
     mv $OUTDIR/naive_msa.fasta $PUBDIR
