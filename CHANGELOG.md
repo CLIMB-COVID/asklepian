@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 3.1.0 2022-03-05
+### Changed
+* `make_variants_table_v2` is now the default variant table builder
+* `gzip --fast` is used to compress the genome table to better balance compression and upload performance
+
 ## 3.0.0 2022-02-27
 ### Changed
 * `make_variants_table_v2` uses multiprocessing to parallelize reading the MSA and creating the daily variants table to significantly improve performance

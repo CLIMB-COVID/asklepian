@@ -25,7 +25,7 @@ SECONDS=0
 
 # Make and push genome table
 if [ ! -f "$OUTDIR/genome_table2.ok" ]; then
-    python $ASKLEPIAN_DIR/make_genomes_table_v2.py --fasta $WORKDIR/naive_msa.fasta --meta $WORKDIR/consensus.metrics.tsv --best-ls $WORKDIR/best_refs.paired.ls | gzip > $OUTDIR/${TABLE_BASENAME}.csv.gz
+    python $ASKLEPIAN_DIR/make_genomes_table_v2.py --fasta $WORKDIR/naive_msa.fasta --meta $WORKDIR/consensus.metrics.tsv --best-ls $WORKDIR/best_refs.paired.ls | gzip --fast > $OUTDIR/${TABLE_BASENAME}.csv.gz
     touch $OUTDIR/genome_table2.ok
 else
     echo "[NOTE] Skipping make_genomes_table (v2)"

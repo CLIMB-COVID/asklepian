@@ -121,15 +121,14 @@ SECONDS=0
 # Here we pass OUTDIR as both WORKDIR and OUTDIR for Asklep prod, but alternative OUTDIR can be used for testing
 # Note flags are written to OUTDIR
 $ASKLEPIAN_DIR/go_genome.sh $OUTDIR $OUTDIR $GENOME_TABLE_BASENAME &
-$ASKLEPIAN_DIR/go_variant.sh $OUTDIR $OUTDIR $VARIANT_TABLE_BASENAME &
-$ASKLEPIAN_DIR/go_variant_v2.sh $OUTDIR $OUTDIR test_v2_${VARIANT_TABLE_BASENAME} &
+$ASKLEPIAN_DIR/go_variant_v2.sh $OUTDIR $OUTDIR ${VARIANT_TABLE_BASENAME} &
 
 # Wait for jobs
 wait
 python -c "import datetime; print('(wait)', str(datetime.timedelta(seconds=$SECONDS)))"
 SECONDS=0
 
-if [ ! -f "$OUTDIR/genome_upload2.ok" ] || [ ! -f "$OUTDIR/variant_upload.ok" ]; then
+if [ ! -f "$OUTDIR/genome_upload2.ok" ] || [ ! -f "$OUTDIR/variant_upload2.ok" ]; then
     # EX_SOFTWARE
     exit 70
 fi
@@ -142,8 +141,7 @@ if [ ! -f "$OUTDIR/latest.ok" ]; then
     # Clean
     rm -f $OUTDIR/best_refs.paired.fasta
     rm -f $OUTDIR/${GENOME_TABLE_BASENAME}.csv.gz
-    #rm -f $OUTDIR/consensus.metrics.tsv
-    rm -f $OUTDIR/test_v2_${VARIANT_TABLE_BASENAME}.csv
+    rm -f $OUTDIR/consensus.metrics.tsv
 
     # Push
     mv $OUTDIR/naive_msa.fasta $PUBDIR
