@@ -108,7 +108,7 @@ SECONDS=0
 # NOTE 20210729 datafunk was replaced with gofasta to significantly improve performance
 
 if [ ! -f "$OUTDIR/msa.ok" ]; then
-    minimap2 -t 24 -a -x asm5 $WUHAN_FP $OUTDIR/best_refs.paired.fasta 2> $OUTDIR/mm2.log | gofasta sam tomultialign -t 24 --reference $WUHAN_FP -o $OUTDIR/naive_msa.fasta 2> $OUTDIR/gofasta.log
+    minimap2 -t 24 -a -x asm5 --score-N=0 $WUHAN_FP $OUTDIR/best_refs.paired.fasta 2> $OUTDIR/mm2.log | gofasta sam tomultialign -t 24 --reference $WUHAN_FP -o $OUTDIR/naive_msa.fasta 2> $OUTDIR/gofasta.log
     touch $OUTDIR/msa.ok
 else
     echo "[NOTE] Skipping MSA"
